@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Previously i Built a chap application using PHP, MySQL tried to implemet the same thing in MERN Stack the Project 
 
 ## Available Scripts
 
