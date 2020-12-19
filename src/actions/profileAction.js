@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {GET_PROFILE,PROFILE_LOADING, CLEAR_CURRENT_PROFILE, ADD_CONTACT,GET_CHATS} from './types'
+import {GET_PROFILE,PROFILE_LOADING, CLEAR_CURRENT_PROFILE, ADD_CONTACT} from './types'
 
 //get current user
 
@@ -29,24 +29,7 @@ export const addContact=(con)=>dispatch=>{
     }).catch(e=>console.log(e))
 }
 
-export const getMessages=(data)=>dispatch=>{
-    axios.get(`http://localhost:5000/chat/${data}`,{headers: header}).then(res=>{
-        dispatch({
-            type : GET_CHATS,
-            payload: res.data
-        })
-        
-    }).catch(e=>console.log(e))
-}
 
-export const sendMessage =(data)=>dispatch=>{
-    axios.post('http://localhost:5000/chat',data,{headers :header}).then(res=>{
-        dispatch({
-            type: GET_CHATS,
-            payload : res.data
-        })
-    })
-}
 
 export const setProfileLoading=()=>{
     return{

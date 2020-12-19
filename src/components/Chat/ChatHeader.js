@@ -4,9 +4,9 @@ import face from "../../images/user/face.jpeg";
 import arrow from "../../images/arrow-left.svg";
 
 
-const ChatHeader= ({contactInfo})=> {
+const ChatHeader= ({contact})=> {
 
-    if(contactInfo){
+    if(contact){
     return(        
         <div className="ChatHeader row">
             <div className="left">
@@ -15,7 +15,7 @@ const ChatHeader= ({contactInfo})=> {
                     <div className="imageblock"><img src={face} alt=""/></div>
                 </Link>
                 <div className="nameblock">
-                    <div className="name">{contactInfo.cname}</div>
+                    <div className="name">{contact.cname}</div>
                 </div>
             </div>
             <div className="right">

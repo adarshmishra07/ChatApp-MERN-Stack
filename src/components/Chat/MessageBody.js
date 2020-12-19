@@ -1,51 +1,41 @@
-import React, { Component } from "react";
-import ScrollableFeed from 'react-scrollable-feed'
-import Moment from 'react-moment';
+import React from "react";
+import ScrollableFeed from "react-scrollable-feed";
+import { useEffect } from "react";
 
-class MessageBody extends Component {
-  state={
-    count : 0
-  }
- 
-  componentDidUpdate() {
-    this.props.get(this.props.chatName)
-    if(this.state.count===0){
-    this.scroll()
-    this.setState({count:1})
-    }
-  }
-  
-   scroll=()=>{
-    this.messagesEnd.scrollIntoView();
-   }
-  render() {
-    const {chats , user} = this.props
-    let chatBody;
-    if (chats) {      
-      chatBody = Object.values(chats).map((chat) => {
-        if (chat.sender === user) {
-          return (
-            <div className="receiver" key={chat.date}>
-              {chat.message}
-              <div className="timehai"><Moment format='HH:mm A'>{chat.date}</Moment></div>
+function MessageBody({messages,user}) {
+  useEffect(() => {
+  }, [messages])
+
+  let chatBody;
+  if (messages) {
+    chatBody = Object.values(messages).map((chat) => {
+      if (chat.sender === user.id) {
+        return (
+          <div className="receiver" key={chat.date}>
+            {chat.message}
+            <div className="timehai">
+             {chat.date}
             </div>
-          );
-        } else {
-          return (
-            <div className="sender" key={chat.date}>
-              {chat.message}
-          <div className="timehai"><Moment format='hh:mm a'>{chat.date}</Moment></div>
+          </div>
+        );
+      } else {
+        return (
+          <div className="sender" key={chat.date}>
+            {chat.message}
+            <div className="timehai">
+             {chat.date}
             </div>
-          );
-        }
-      });
-      
-    }
-  return <div id="message-window"><ScrollableFeed>{chatBody}<div style={{ float:"left", clear: "both" }}
-  ref={(el) => { this.messagesEnd = el; }}>
-</div></ScrollableFeed></div>;
-    }
-  
+          </div>
+        );
+      }
+    });
+  }
+  return (
+    <div id="message-window">
+      <ScrollableFeed >
+        {chatBody}
+      </ScrollableFeed>
+    </div>
+  );
 }
-
 export default MessageBody;

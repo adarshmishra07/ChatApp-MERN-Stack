@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Messageinput({ chatName, send ,get}) {
+function Messageinput({chatName,send}) {
   const [message, setMessage] = useState();
   const sendMessage = (e) => {
     e.preventDefault()
@@ -10,7 +10,6 @@ function Messageinput({ chatName, send ,get}) {
         chatName,
       };
       send(data)
-      get(chatName)
     }
     setMessage('')
   };

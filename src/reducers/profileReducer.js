@@ -3,13 +3,11 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   ADD_CONTACT,
-  GET_CHATS,
 } from "../actions/types";
 
 const initialState = {
   profile: {},
-  messgae: {},
-  chats: {},
+  messgae: null,
   loading: false,
 };
 
@@ -31,17 +29,11 @@ export default function(state = initialState, action) {
         ...state,
         message: action.payload,
       };
-    case GET_CHATS:
-      return {
-        ...state,
-        chats: action.payload,
-      };
     case CLEAR_CURRENT_PROFILE:
       return {
         ...state,
         contacts: null,
-        profile: {},
-        chats: null,
+        profile: {}
       };
     default:
       return state;
